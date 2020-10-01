@@ -1,63 +1,48 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
-typedef struct {
-    /*
-    The queue should contain an array to hold a maximum of 10 elements.
-    */
-    int arr[50];
-} Queue;
 
-/*
-Initialising the queue, use this queue variable 'q' in your functions.
-*/
+typedef struct {
+    int arr[10];
+}Queue;
+
 Queue q;
-int front = 0, end = 0;
+int front=-1,rear=-1;
 
 void enqueue(int n) {
-    /*
-    Enqueue the integer n into the queue.
-    Ignore if the operation is not possible.
-    */
-    if(end - front < 9){
-        q.arr[end++] = n;
+    if(rear==-1){
+        front=rear=0;  
+        q.arr[rear]=n;
     }
+    else if(rear<9)
+        q.arr[++rear]=n;
 }
 
 int dequeue() {
-    /*
-    Dequeue the front element from the queue and return that element.
-    Return -1 the operation is not possible.
-    */
-    int temp;
-    if(end == front){
+    if(front==-1)
         return -1;
+    else if(front == rear){
+        int temp = front;
+        front = -1;
+        rear = -1;
+        return q.arr[temp];
     }
-    else{
-        temp = q.arr[front++];
-        return temp;
-    }
+    else
+        return q.arr[front++];
 }
 
 bool isEmpty() {
-    /*
-    Check if the queue is empty or not. Return true/false.
-    */
-    if(end == front)
-        return true;
-    else
-        return false;
+    if(front == -1)
+        return 1;
+    return 0;   
 }
 
 bool isFull() {
-    /*
-    Check if the queue is full or not. Return true/false.
-    */
-    if(end - front == 9)
-        return true;
-    else
-        return false;
+    if(rear==9 && front==0)
+        return 1;
+    return 0;
 }
+
 int main() {
     int q, choice, n;
     scanf("%d", &q);
@@ -81,3 +66,4 @@ int main() {
     }
     return 0;
 }
+
