@@ -2,31 +2,21 @@
 #include <stdbool.h>
 #include<string.h>
 void sort(char strings[][40], int n) {
-    /*
-    Sort the given array of strings
-    n - Number of strings
-    
-    NOTE: strings dimensions are n x 30 (strings[n][30])
-    */
+   
     char temp[40];
-    for(int i = 0; i < n; i++) {
-        for(int j = i + 1; j < n; j++){
-            if (strcmp(strings[i], strings[j]) > 0) {
-                strcpy(temp, strings[i]);
-                strcpy(strings[i], strings[j]);
-                strcpy(strings[j], temp);
+    for(int j = 0; j < n; j++) {
+        for(int i = j + 1; i < n; i++){
+            if (strcmp(strings[j], strings[i]) > 0) {
+                strcpy(temp, strings[j]);
+                strcpy(strings[j], strings[i]);
+                strcpy(strings[i], temp);
             }
         }
     }
 }
 
 bool search(char strings[][40], int n, char target[40]) {
-    /*
-    Binary Search for target string in strings array
-    Return true if found, else false
-    
-    NOTE: strings array here can be assumed as sorted
-    */
+   
     int start, mid, end, flag = 0;
     start = 0;
     end = n - 1;
