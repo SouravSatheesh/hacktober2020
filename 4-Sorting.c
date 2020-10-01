@@ -1,12 +1,6 @@
 #include <stdio.h>
 
 void bubbleSort(int arr[], int n) {
-    /* 
-    Sort the arr using the Bubble Sort algorithm
-    Arguments:
-        1. arr - array to be sorted
-        2. n - length of array
-    */
     int temp;
     for(int j = 0; j < n - 1; j++)
     {
@@ -22,12 +16,7 @@ void bubbleSort(int arr[], int n) {
 }
 
 void insertionSort(int arr[], int n) {
-    /* 
-    Sort the arr using the Bubble Sort algorithm
-    Arguments:
-        1. arr - array to be sorted
-        2. n - length of array
-    */
+
     int j, key;
     for(int  i = 1; i <n; i++)
     {
@@ -43,12 +32,7 @@ void insertionSort(int arr[], int n) {
 }
 
 void selectionSort(int arr[], int n) {
-    /* 
-    Sort the arr using the Bubble Sort algorithm
-    Arguments:
-        1. arr - array to be sorted
-        2. n - length of array
-    */
+
     int temp,min_index;
     for(int i = 0; i < n-1; i++)
     {
