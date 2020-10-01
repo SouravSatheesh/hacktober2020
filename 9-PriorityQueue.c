@@ -1,27 +1,54 @@
 #include<stdio.h>
 
-int main() {
-    /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    int arr[100], q, t, len=0, ele, smallest, value;
-    scanf("%d",&q);
-    while(q--) {
-        scanf("%d",&t);
-        if(t == 1) {
-            scanf("%d",&ele);
-            arr[len++] = ele;
+typedef struct {
+    int a[10];
+} Queue;
+
+Queue q;
+int front=0;
+int rear=0;
+
+void enqueue(int n) {
+    int t,te;
+    if(rear<9)
+    {
+        q.a[rear]=n;
+        t=rear;
+        while(q.a[t]<q.a[t-1] && t>front)
+        {
+            te=q.a[t];
+            q.a[t]=q.a[t-1];
+            q.a[t-1]=te;
+            t--;
         }
-        else if(t == 2) {
-            smallest = 0;
-            for(int i = 1; i < len; i++) {
-                if(arr[i] < arr[smallest])
-                    smallest = i;
-            }
-            value = arr[smallest];
-            for(int i = smallest; i < len; i++) {
-                arr[i] = arr[i+1];
-            }
-            len--;
-            printf("%d\n", value);
+        rear++;
+
+    }
+}
+
+int dequeue() {
+    if(rear == front)
+    {
+        return -1;
+    }
+    else 
+    {
+        front++;
+        return q.a[front-1];   
+    }
+}
+
+int main() {
+    int q, choice, n;
+    scanf("%d", &q);
+    while(q--) {
+        scanf("%d", &choice);
+        switch(choice) {
+            case 1: scanf("%d",&n);
+                    enqueue(n);
+                    break;
+            case 2: printf("%d\n", dequeue());
+                    break;
         }
     }
     return 0;
