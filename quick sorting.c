@@ -3,9 +3,9 @@ void quicksort_method (int [], int, int);
 int main()
 {
 int element_list[50],count, counter;
-printf("Please enter the total count of the elements that you want to sort: ");
+printf("Please enter the total number of the elements that you want to sort: ");
 scanf("%d", &count);
-printf("Please input the elements that has to be sorted:\n");
+printf("Please enter the elements that has to be sorted:\n");
 for (counter = 0; counter < count; counter++)
 {
 scanf("%d", &element_list[counter]);
